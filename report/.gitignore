@@ -1,0 +1,9 @@
+*.log
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+# We *will* include the final versions of our reports in the git repo, but with more descriptive names
+report.pdf

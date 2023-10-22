@@ -20,7 +20,7 @@
 \usepackage[utf8]{inputenc} % allow utf-8 input
 \usepackage[T1]{fontenc}    % use 8-bit T1 fonts
 \usepackage{hyperref}       % hyperlinks
-\usepackage{url}            % simple URL typesetting
+\usepackage{xurl}            % simple URL typesetting
 \usepackage{booktabs}       % professional-quality tables
 \usepackage{amsfonts}       % blackboard math symbols
 \usepackage{nicefrac}       % compact symbols for 1/2, etc.
@@ -29,7 +29,7 @@
 \usepackage{xcolor}
 
 
-\title{Raport inițial - Inserati$\_$aici$\_$titlul$\_$proiectului}
+\title{Raport inițial - Mașinin autonome - detecție și recunoașterea semnelor de circulație}
 
 % The \author macro works with any number of authors. There are two commands
 % used to separate the names and addresses of multiple authors: \And and \AND.
@@ -40,13 +40,13 @@
 % \AND instead of \And before the third author name.
 
 \author{%
- ECHIPĂ: inserați$\_$aici$\_$codul$\_$echipei
+ ECHIPĂ: RMA02
  \AND
- Nume Prenume Student1 \\
- Grupa 1111C
+ Mițca Dumitru - m1 \\
+ Grupa 1311A
  \AND
- Nume Prenume Student 2 \\
- Grupa 1111C
+ Mihalache Mihai - m2 \\
+ Grupa 1311A
 }
 
 \begin{document}
@@ -67,44 +67,77 @@ Prelucrarea Imaginilor - Proiect
 
 \section{Descrierea temei}
 
-- Descrierea propunerii de proiect: tema aleasă, relevanta proiectului, scopul, obiective SMART (specific, measurable, attainable, relevant,  time based), prezentarea caracterului inovativ, cerințe funcționale, provocari tehnologice
+% - Descrierea propunerii de proiect: tema aleasă, relevanta proiectului, scopul, obiective SMART (specific, measurable, attainable, relevant,  time based), prezentarea caracterului inovativ, cerințe funcționale, provocari tehnologice
 
-- Descrierea succintă a rezultatului final al proiectului cu detalierea aplicabilității în industrie și potențiali utilizatori (nevoile identificate în domeniu, analiza cererii pentru rezultatele proiectului, potențiali consumatori, competitori pe piață etc.)
+The theme for our project is computer detection and recognition of road signs, a topic that becomes
+more relevant every day as the idea of autonomous cars becomes more popular and more work is put
+towards making them reality.
+
+Our goal is by the end of the project is
+
+SMART objectives:
+\begin{itemize}
+  \item detect all road signs in a picture; this objective is strictly required for our program to work
+\end{itemize}
+
+TODO: caracter inovativ
+
+Functional requirements:
+\begin{itemize}
+  \item when given an image of a road that contains road signs, our program should correctly detect road signs
+  \item when given an image of a road that does not contain road signs, our program should detect road signs
+  \item our program should misclassify one road sign as another, i.e. a stop sign should not be classified as
+  a "you have right of way" sign
+  \item our program should not misclassify non-road-sign objects as road signs
+\end{itemize}
+
+The technical challenges we will face are: the need for powerful hardware, the need for our program to cope
+with bad weather conditions. We do not believe finding a dataset of pictures with road signs to be particularly
+difficult, but finding one specific to Romania might be harder, however, a general European dataset would
+quite useful
+
+% - Descrierea succintă a rezultatului final al proiectului cu detalierea aplicabilității în industrie și potențiali utilizatori (nevoile identificate în domeniu, analiza cererii pentru rezultatele proiectului, potențiali consumatori, competitori pe piață etc.)
+
+Our project's end product will be a program that takes an image of a road as input and returns the action(s) an
+autonomous vehicle should take based on the road signs in it. This program would be useful in the automotive
+industry as the development of autonomous vehicles has become more and more popular in recent times.
+
+Our potential clients would be automative companies that have shown interest in developing autonomous vehicles.
 
 \section{Modalitatea de lucru propusă}
 %includeți aici link-ul repository-ului de pe GIT
-- modalitatea de lucru propusă (task-urile planificate și alocarea acestora pe membrii echipei)
+% - modalitatea de lucru propusă (task-urile planificate și alocarea acestora pe membrii echipei)
 
-\color{red}
+% \color{red}
 
-- în planificarea realizată trebuie să luați în considerare următoarele tipuri de activități ce intervin în dezvoltarea proiectului: documentare, implementare, testare, raportare
+% - în planificarea realizată trebuie să luați în considerare următoarele tipuri de activități ce intervin în dezvoltarea proiectului: documentare, implementare, testare, raportare
 
-\color{black}
+% \color{black}
 
 \textbf{Identificarea și alocarea task-urilor}
 
 \begin{center}
-\begin{tabular}{ |c|c|c| } 
+\begin{tabular}{ |c|c|c| }
  \hline
- \textbf{Task ID} & \textbf{Descriere task} & \textbf{Membru echipă} \\ 
+ \textbf{Task ID} & \textbf{Descriere task} & \textbf{Membru echipă} \\
   \hline
- task1 & descriere task1 &  m1, m2 \\ 
+ rsch & Research existing state of the art models &  m1, m2 \\
   \hline
- task2 & descriere task2 &  m2 \\ 
+ task2 & descriere task2 &  m2 \\
  \hline
- ... & ... & ... \\ 
+ ... & ... & ... \\
  \hline
 \end{tabular}
 \end{center}
 
-\textbf{Git repository:} http...
+\textbf{Git repository:} \url{https://github.com/VedereArtificiala/prelucrareaimaginilor-proiect-itzyabois}
 
 \section*{Referințe}
 
 \medskip
 
 \small
-%Exemple de referințe, 
+%Exemple de referințe,
 \color{red}
 Mai jos aveți câteva referințe date ca exemplu. Ștergeți/comentați aceste referințe și adăugați referințele de care aveți nevoie. În cazul în care nu aveți referințe, ștergeți/comentați toată secțiunea \textbf{Referințe}.
 
