@@ -73,26 +73,19 @@ The theme for our project is computer detection and recognition of road signs, a
 more relevant every day as the idea of autonomous cars becomes more popular and more work is put
 towards making them reality.
 
-Our goal is by the end of the project is to have a program that correctly detects road signs in an image,
-and to also output actions based on what's there.
+Our goal is by the end of the project is to have a program that can classify road signs in real time as if they came
+from a camera mounted on a vehicle.
 
 SMART objectives:
 \begin{itemize}
-  \item detect all road signs in a picture; this can be measured by manually counting the road signs in the picture
+  \item detect all road signs in a frame; this can be measured by manually counting the road signs in the picture
   and comparing that against the program output; this is strictly required for our project; this can be achieved until
   meeting 4
-  \item identify a road sign in a picture; it is measurable by checking how many signs it identifies correctly in X
+  \item identify a road sign in a frame; it is measurable by checking how many signs it identifies correctly in X
   images of signs; this is strictly required for our project; this will be achieved until meeting 6
-  \item output actions based on what there is in the image; it is measurably by checking against what a real driver
-  would do; this is optional but a nice-to-have; this would be achieved until the end of the semester
+  \item implement a road sign classification algorithm; it is measurable by computing the percentage of correctly classified
+  road signs; this is strictly required; this will be achieved until the end of the project
 \end{itemize}
-
-TODO: caracter inovativ
-idei:
-1. dataset mic
-2. preprocesare algoritmica + segmentare algoritmica
-3. comenzi sugerate (incetinesti la atentie copii, opresti la stop, continui la prioritate, ar trb pus pe ceva masina dar de unde, semnalizezi la obligatoriu la dreapta/stanga)
-% 4. Folosire a unei camere depth pt a estima distanta de la masina la semn
 
 Functional requirements:
 \begin{itemize}
@@ -104,15 +97,14 @@ Functional requirements:
 \end{itemize}
 
 The technical challenges we will face are: the need for powerful hardware, the need for our program to cope
-with bad weather conditions. We do not believe finding a dataset of pictures with road signs to be particularly
+with bad weather conditions. We do not believe finding a dataset of images with road signs to be particularly
 difficult, but finding one specific to Romania might be harder, however, a general European dataset would
-quite useful
+quite useful.
 
 % - Descrierea succintă a rezultatului final al proiectului cu detalierea aplicabilității în industrie și potențiali utilizatori (nevoile identificate în domeniu, analiza cererii pentru rezultatele proiectului, potențiali consumatori, competitori pe piață etc.)
 
-Our project's end product will be a program that takes an image of a road as input and returns the action(s) an
-autonomous vehicle should take based on the road signs in it. This program would be useful in the automotive
-industry as the development of autonomous vehicles has become more and more popular in recent times.
+Our project's end product will be a program classifies, in real-time, road signs from an image/video feed or similar.
+This would be useful in the automotive industry as autonomous vehicles become a more popular topic by the day.
 
 Our potential clients would be automative companies that have shown interest in developing autonomous vehicles.
 
@@ -125,6 +117,9 @@ Our potential clients would be automative companies that have shown interest in 
 % - în planificarea realizată trebuie să luați în considerare următoarele tipuri de activități ce intervin în dezvoltarea proiectului: documentare, implementare, testare, raportare
 
 % \color{black}
+
+We plan to mostly work in parallel, and as such have split our tasks in a manner where we can work without having
+to wait for each other to finish a specific task.
 
 \textbf{Identificarea și alocarea task-urilor}
 
@@ -147,7 +142,7 @@ Our potential clients would be automative companies that have shown interest in 
  \hline
  task7 & Implementing the classification algorithm (ML/AI/DL) & m2 \\
  \hline
- task8 & Postprocessing the results (aka identifying the action to be taken) & m1, m2 \\
+ task8 & Postprocessing the results & m1, m2 \\
  \hline
  task9 & Writing the final documentation & m2 \\
  \hline
