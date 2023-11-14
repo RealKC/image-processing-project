@@ -5,5 +5,7 @@
 *.log
 *.out
 *.synctex.gz
+*.bbl
+*.blg
 # We *will* include the final versions of our reports in the git repo, but with more descriptive names
 report.pdf
