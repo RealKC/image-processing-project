@@ -126,8 +126,9 @@ Conclusions:
 
 \subsection{State of the art}
 
-For existing software solutions we surveyed the pretrained YOLOv8 model YOLOv8n and ...
+For existing software solutions we surveyed the pretrained YOLOv8 model YOLOv8n and Roboflow.
 
+\subsubsection{YOLOv8}
 Through experimentation using the pretrained YOLOv8 model, we came to the conclusion that pretrained
 models are unlikely to be useful to particular applications, due to the pretrained models' generality
 and datasets where weather and or lightning conditions aren't varied enough.
@@ -135,12 +136,49 @@ and datasets where weather and or lightning conditions aren't varied enough.
 \begin{figure}[h!]
     \centerline{\includegraphics[width=0.5\linewidth,]{poza-fata-ac}}
     \caption{YOLOv8n with no additional training detects 2 stop signs in this image}
+    \label{poza-fata-ac}
 \end{figure}
+
+
+\begin{figure}
+    \centerline{\includegraphics[width=0.5\linewidth]{poza-fata-ac-results}}
+    \caption{Figure \ref{poza-fata-ac} with labels, as can be seen, the "must go right" sign is
+    misclassified as a "stop sign"}
+\end{figure}
+
+\subsubsection{Roboflow}
+
+TO DO: FILL IN
 
 \section{Method description}
 
-We propose an approach in which the process is split in two steps, following existing practices:
-a sign detection step and a sign recognition step.
+We propose an approach in which the process is split in two steps: a detection step and a
+classification step, following existing practices in literature.
+
+\subsection{The detection step}
+
+We've chosen a neural-network-based approach for our detection step in order to see the
+what differences would arrise from existing approaches taken in literature, but also in
+part due to perceived ease of development\footnote{Reality often differs from one's
+expectations.}.
+
+We've decided to use a model based on the YOLOv8 architecture that we've trained on various
+datasets, but have yet to find any success.
+
+\subsection{The classification step}
+
+TO DO: FILL IN
+
+\section{Preliminary results}
+
+TO DO: FILL IN
+
+\section{Preliminary conclusions}
+
+Neural-network-based approaches are very accessible --- \emph{in theory} --- but getting good
+results out of them is difficult due to not being aware of mistakes that can lead to overfitting
+or due to the powerful hardware needed for model training.
+
 
 \bibliographystyle{IEEEtran}
 \bibliography{IEEEabrv,refs}
