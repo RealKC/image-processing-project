@@ -148,7 +148,10 @@ and datasets where weather and or lightning conditions aren't varied enough.
 
 \subsubsection{Roboflow}
 
-TO DO: FILL IN
+This is one of the best tools that we found and has greatly helped us in 
+creating testing datasets and previewing a trained model with those tests. Despite all 
+of this, it comes with a great dissadvantage: its a freemium model, you only get to train 
+with a dataset for free three times total per project.
 
 \section{Method description}
 
@@ -167,11 +170,21 @@ datasets, but have yet to find any success.
 
 \subsection{The classification step}
 
-TO DO: FILL IN
+We've chosen the German Traffic Sign Recognition Benchmark[x] for our dataset.
+The dataset resembled the CIFAR10 dataset so all we had to do is take an existing network
+that worked well on CIFAR10 and tweak it to work for our dataset. For training we used 
+Pytorch and got over 94\% accuracy on the test set. Unfortunately we highly suspect that 
+this method had overfit.
+\begin{figure}[h!]
+    \centerline{\includegraphics[width=0.7\linewidth,]{overfit}}
+    \caption{Plot of the training progress showing suprisingly rapid growth}
+\end{figure}
 
 \section{Preliminary results}
 
-TO DO: FILL IN
+As mentioned above we got over 94\% accuracy on classification, and around 80\% 
+on segmentation but it perfomed badly on our personal test, that being showing a video of
+a car driving in town, or no detections on \ref{poza-fata-ac}.
 
 \section{Preliminary conclusions}
 
