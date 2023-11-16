@@ -7,6 +7,8 @@
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
+\usepackage{float}
+\usepackage{placeins}
 \usepackage{hyperref}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
@@ -95,7 +97,7 @@ Reference \cite{4370763} was interesting to read but ultimately we found the app
 to be limiting as it could only detect road signs with red borders that were either circles or triangles.
 
 Reference \cite{Karthika2022} proposed an approach that had multiple layers of preprocessing before
-the detection and classification itself, which was done using the YOLO architecture.
+the detection and classification itself, which was done using the YOLO (You only look once) architecture.
 
 Reference \cite{metastudy2019}, a metastudy on the state of computer vision in traffic sign detection and
 recognition in 2019, was very useful as it showed us approaches that would be likely be useful
@@ -122,11 +124,9 @@ Conclusions:
     \item grayscale approaches are not computationally viable
 \end{itemize}
 
-
-
 \subsection{State of the art}
 
-For existing software solutions we surveyed the pretrained YOLOv8 model YOLOv8n and Roboflow.
+For existing software solutions we surveyed the pretrained YOLOv8\cite{Jocher_YOLO_by_Ultralytics_2023} model YOLOv8n and Roboflow.
 
 \subsubsection{YOLOv8}
 Through experimentation using the pretrained YOLOv8 model, we came to the conclusion that pretrained
@@ -149,7 +149,7 @@ or the same, architectures used by pretrained models or fine-tuning them is a go
 
 \subsubsection{Roboflow}
 
-Roboflow is a freemium service that provided us with two important services:
+Roboflow\footnote{Roboflow can be accessed at \url{https://roboflow.com/}} is a freemium service that provided us with two important services:
 \begin{itemize}
     \item a dataset service that allows one to annotate datasets and also allows conversions
      between different dataset formats used by various preexisting architectures
@@ -165,11 +165,22 @@ We also noticed that there was considerable delay in using the models in one's b
 not sure if this is a limitation of the models trained by Roboflow, the hardware on which they run, or
 the nature of the internet connection to it.
 
-
 \section{Method description}
 
 We propose an approach in which the process is split in two steps: a detection step and a
 classification step, following existing practices in literature.
+
+The detection step takes in an image, detects possible objects in the image that might be
+road-signs (based on color, shape, etc.). The classification step takes in an image containing
+only a possible road-sign and classifies it into the kind of road sign it is, or classifies it
+as a non-road-sign if the detection step misdetected an object as a road-sign. These steps are
+chained together using a middle layer that does any needed preprocessing on the segments from
+the original image given by the detection step, and then feeds them to the classification step.
+
+\begin{figure*}
+    \centerline{\includegraphics[width=\linewidth,]{overfit}}
+    \caption{Plot of the classification training progress showing a surprisingly rapid increase in accuracy}
+\end{figure*}
 
 \subsection{The detection step}
 
@@ -187,12 +198,8 @@ to, hopefully, obtain more success in the detection step.
 We've chosen the German Traffic Sign Recognition Benchmark\cite{Houben-IJCNN-2013} for our dataset.
 The dataset resembled the CIFAR10 dataset so all we had to do is take an existing network
 that worked well on CIFAR10 and tweak it to work for our dataset. For training we used
-Pytorch and got over 94\% accuracy on the test set. Unfortunately we highly suspect that
+PyTorch\cite{Paszke_PyTorch_An_Imperative_2019} and got over 94\% accuracy on the test set. Unfortunately we highly suspect that
 this method had overfit.
-\begin{figure*}
-    \centerline{\includegraphics[width=\linewidth,]{overfit}}
-    \caption{Plot of the training progress showing suprisingly rapid growth}
-\end{figure*}
 
 \section{Preliminary results}
 
@@ -209,7 +216,6 @@ or due to the powerful hardware needed for model training.
 However, we do believe that real-time recognition of traffic signs becomes a more achievable goal
 as more and more time is passing due to this high accessibility, to people who are more experienced
 in the domain than us, and powerful hardware becoming more cheap with time.
-
 \bibliographystyle{IEEEtran}
 \bibliography{IEEEabrv,refs}
 \end{document}
