@@ -131,7 +131,8 @@ For existing software solutions we surveyed the pretrained YOLOv8 model YOLOv8n 
 \subsubsection{YOLOv8}
 Through experimentation using the pretrained YOLOv8 model, we came to the conclusion that pretrained
 models are unlikely to be useful to particular applications, due to the pretrained models' generality
-and datasets where weather and or lightning conditions aren't varied enough.
+and datasets where weather and or lightning conditions aren't varied enough. We believe using similar,
+or the same, architectures used by pretrained models or fine-tuning them is a good path forward however.
 
 \begin{figure}[h!]
     \centerline{\includegraphics[width=0.5\linewidth,]{poza-fata-ac}}
@@ -148,10 +149,22 @@ and datasets where weather and or lightning conditions aren't varied enough.
 
 \subsubsection{Roboflow}
 
-This is one of the best tools that we found and has greatly helped us in 
-creating testing datasets and previewing a trained model with those tests. Despite all 
-of this, it comes with a great dissadvantage: its a freemium model, you only get to train 
-with a dataset for free three times total per project.
+Roboflow is a freemium service that provided us with two important services:
+\begin{itemize}
+    \item a dataset service that allows one to annotate datasets and also allows conversions
+     between different dataset formats used by various preexisting architectures
+    \item a model preview service, in which Roboflow will use your dataset to train a model that
+    you can try in your browser --- this service can be used a maximum of 3 times per project for free
+\end{itemize}
+
+However the freemium nature of the service is a disadvantage as one might invest a lot of time in
+this service due to its apparent free nature and latter be forced to buy-in when that might not have
+been the original intention.
+
+We also noticed that there was considerable delay in using the models in one's browser, we are however
+not sure if this is a limitation of the models trained by Roboflow, the hardware on which they run, or
+the nature of the internet connection to it.
+
 
 \section{Method description}
 
@@ -166,23 +179,24 @@ part due to perceived ease of development\footnote{Reality often differs from on
 expectations.}.
 
 We've decided to use a model based on the YOLOv8 architecture that we've trained on various
-datasets, but have yet to find any success.
+datasets, but have yet to find any success. Next we will explore a more classical approach
+to, hopefully, obtain more success in the detection step.
 
 \subsection{The classification step}
 
-We've chosen the German Traffic Sign Recognition Benchmark[x] for our dataset.
+We've chosen the German Traffic Sign Recognition Benchmark\cite{Houben-IJCNN-2013} for our dataset.
 The dataset resembled the CIFAR10 dataset so all we had to do is take an existing network
-that worked well on CIFAR10 and tweak it to work for our dataset. For training we used 
-Pytorch and got over 94\% accuracy on the test set. Unfortunately we highly suspect that 
+that worked well on CIFAR10 and tweak it to work for our dataset. For training we used
+Pytorch and got over 94\% accuracy on the test set. Unfortunately we highly suspect that
 this method had overfit.
-\begin{figure}[h!]
-    \centerline{\includegraphics[width=0.7\linewidth,]{overfit}}
+\begin{figure*}
+    \centerline{\includegraphics[width=\linewidth,]{overfit}}
     \caption{Plot of the training progress showing suprisingly rapid growth}
-\end{figure}
+\end{figure*}
 
 \section{Preliminary results}
 
-As mentioned above we got over 94\% accuracy on classification, and around 80\% 
+As mentioned above we got over 94\% accuracy on classification, and around 80\%
 on segmentation but it perfomed badly on our personal test, that being showing a video of
 a car driving in town, or no detections on \ref{poza-fata-ac}.
 
@@ -192,6 +206,9 @@ Neural-network-based approaches are very accessible --- \emph{in theory} --- but
 results out of them is difficult due to not being aware of mistakes that can lead to overfitting
 or due to the powerful hardware needed for model training.
 
+However, we do believe that real-time recognition of traffic signs becomes a more achievable goal
+as more and more time is passing due to this high accessibility, to people who are more experienced
+in the domain than us, and powerful hardware becoming more cheap with time.
 
 \bibliographystyle{IEEEtran}
 \bibliography{IEEEabrv,refs}
