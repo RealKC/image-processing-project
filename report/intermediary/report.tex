@@ -179,8 +179,10 @@ not sure if this is a limitation of the models trained by Roboflow, the hardware
 the nature of the internet connection to it.
 
 \begin{figure*}
-    \centerline{\includegraphics[width=\linewidth,]{Detection-Block-Diagram}}
+    \includegraphics[width=\linewidth,]{Detection-Block-Diagram}
+    \centering
     \caption{Block diagram for the SVM-based detection step}
+    \noindent\rule{\textwidth}{1pt}
 \end{figure*}
 
 \section{Method description}
@@ -196,9 +198,11 @@ chained together using a middle layer that does any needed preprocessing on the 
 the original image given by the detection step, and then feeds them to the classification step.
 
 \begin{figure*}
-    \centerline{\includegraphics[width=\linewidth,]{overfit}}
+    \includegraphics[width=\linewidth,]{overfit}
+    \centering
     \label{img:training}
     \caption{Plot of the PyTorch-based classification training progress showing a surprisingly rapid increase in accuracy}
+    \noindent\rule{\textwidth}{1pt}
 \end{figure*}
 
 \subsection{The detection step}
