@@ -301,6 +301,13 @@ of 0.64. These results are similar (but slightly better) to the ones of the MPPs
 than the ones of the CNN proposed by \cite{svm_paper}, despite our best efforts to follow the paper, this could be due to mistakes
 in our development process, or different libraries having slight differences in how the algorithms are implemented.
 
+\begin{figure}
+    \includegraphics[width=\linewidth]{keras-detection}
+    \centering
+    \caption{Results of the final system, using the SVM-based detection module and the Keras-based classification module,
+    sadly there are still false positives in the results, as can be inferred from the accuracy reported by the training process}
+\end{figure}
+
 \begin{figure*}
     \includegraphics[width=0.8\linewidth,]{Keras-Confusion-Matrix}
     \centering
