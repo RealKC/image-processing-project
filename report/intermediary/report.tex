@@ -43,7 +43,7 @@ mihai.mihalache2@student.tuiasi.ro}
 \IEEEauthorblockA{\textit{dept. CTI} \\
 \textit{Technical University "Gheorge Asachi" of Iași}\\
 Iași, Romania \\
-otilia.zvoristeanu2@academic.tuiasi.ro}
+otilia.zvoristeanu@academic.tuiasi.ro}
 \and
 \IEEEauthorblockN{4\textsuperscript{th} Simona Caraiman}
 \IEEEauthorblockA{\textit{dept. CTI} \\
@@ -57,8 +57,8 @@ simona.caraiman@academic.tuiasi.ro}
 \begin{abstract}
 Road signs are a vital part of traffic infrastructure and their correct detection and classification
 is a vital task in autonomous driving applications. In this paper, we present a cursory study over
-state-of-the-art software solutions and related papers in the field, and then we present our initial
-implementation of such an application.
+state-of-the-art software solutions and related papers in the field, and then we present our attempts
+to implement various solutions based on what we researched, in an exploratory manner.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -85,6 +85,9 @@ requirements such as:
     or expensive processors to run the detection and classification steps, the costs would be very unreasonable
     for the vast majority of people
 \end{itemize}
+
+Our initial goal was to implement a real-time detection model, however, our work morphed into more of an
+exploratory study of the field.
 
 \begin{figure}
     \centerline{\includegraphics[width=\linewidth]{confusables}}
@@ -232,7 +235,7 @@ Support Vector Classification algorithm, using facilities provided by scikit-lea
 
 \subsection{The classification step}
 
-We explored two approaches to CNN-based\footnote{Convolutional Neural Network} classification: one was based on PyTorch\cite{Paszke_PyTorch_An_Imperative_2019}
+We explored two approaches to CNN-based\footnote{Convolutional Neural Network, see \hyperlink{appendix-cnn}{APPENDIX B} for more information} classification: one was based on PyTorch\cite{Paszke_PyTorch_An_Imperative_2019}
 and one was based on Keras\cite{chollet2015keras}. We used the GTSRB dataset for both approaches,
 as we believe it to be high quality.
 
@@ -285,6 +288,28 @@ When we tested the approach that made use of a PyTorch-based CNN, we got over 94
 on segmentation but it perfomed badly on our personal test, that being showing a video of
 a car driving in town, or no detections on \ref{poza-fata-ac}. The training results can be seen in figure \ref{img:training}.
 
+For our Keras-based CNN, after training, our model showed an accuracy of 98.87\%, which is similar to the results shown in
+Table 5 \S 4.3 \cite{svm_paper}, where the various CNNs shown show a mean accuracy of 99.11\% and a standard deviation to accuracy
+of 0.64. These results are similar to the ones of the MPPs-CNN proposed by \cite{7603237}, however are approximatively 0.3\% worse
+than the ones of the CNN proposed by \cite{svm_paper}, despite our best efforts to follow the paper, this could be due to mistakes
+in our development process, or different libraries having slight differences in how the algorithms are implemented.
+
+\begin{figure*}
+    \includegraphics[width=\linewidth,]{Keras-Confusion-Matrix}
+    \centering
+    \label{img:confusion}
+    \caption{The confusion Matrix for one of our Keras-based CNN}
+    \noindent\rule{\textwidth}{1pt}
+\end{figure*}
+
+\begin{figure*}
+    \includegraphics[width=\linewidth,]{Keras-Training-Results}
+    \centering
+    \label{img:results}
+    \caption{Results of training the Keras-based CNN}
+    \noindent\rule{\textwidth}{1pt}
+\end{figure*}
+
 \section{Conclusions}
 
 Neural-network-based approaches are very accessible --- \emph{in theory} --- but getting good
@@ -294,6 +319,16 @@ or due to the powerful hardware needed for model training.
 However, we do believe that real-time recognition of traffic signs becomes a more achievable goal
 as more and more time is passing due to this high accessibility, to people who are more experienced
 in the domain than us, and powerful hardware becoming more cheap with time.
+
+We also believe that SVM-based approaches for traffic sign detection show great promise due to their nature
+which allows easy composition and great focus on their own task. We believe these approaches should make use
+of colour and shape to detect possible classes of signs --- i.e. an SVM for blue, round signs, an SVM for
+triangle signs, etc., these would correspond to various classes of traffic signs as their shape and colour is
+already standardized to make recognition easy for human drivers --- and compose the SVMs into one module that
+can then detect multiple classes.
+
+We do not have any new insight into the classification step that would make us believe other approaches other
+than neural-network and machine learning approaches should be used for it.
 
 \section*{APPENDIX A}\label{appendixa}
 \blockcquote[Support Vector Machine (SVM) Explained - MATLAB \& Simulink]{matlabsvm}{
@@ -306,6 +341,24 @@ As the quoted article says, SVMs are binary classifiers. It is possible to creat
 classifiers by chaining SVMs, i.e. if SVM 1 can classify circles, and SVM 2 can classify triangles,
 one can build a classifier that classifies both circles and triangles, by feeding the inputs classified
 as "not circles" by SVM 1 to SVM 2.
+
+\section*{APPENDIX B}\label{appendix-cnn}
+
+Convolution neural networks are a type of neural network, a good explanation of them is the following quote
+from an IBM Article:
+
+\blockcquote[What are convolutional neural networks?]{ibm-article}{Convolutional neural networks are distinguished from other neural networks by their superior performance with image, speech, or audio signal inputs. They have three main types of layers, which are:
+
+\begin{itemize}
+    \item Convolutional layer
+    \item Pooling layer
+    \item Fully-connected (FC) layer\footnote{In our paper we've referred to this layer as a "Dense layer" as this is the terminology used by Keras}
+\end{itemize}
+
+The convolutional layer is the first layer of a convolutional network. While convolutional layers can be followed by additional convolutional layers or pooling layers, the fully-connected layer is the final layer. With each layer, the CNN increases in its complexity, identifying greater portions of the image.
+}
+
+
 \bibliographystyle{IEEEtran}
 \bibliography{IEEEabrv,refs}
 \end{document}
