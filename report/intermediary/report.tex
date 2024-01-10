@@ -292,16 +292,24 @@ softmax layer from the original paper is part of the densely-connected layer.
 
 When we tested the approach that made use of a PyTorch-based CNN, we got over 94\% classification accuracy, and aproximately 80\%
 on segmentation but it perfomed badly on our personal test, that being showing a video of
-a car driving in town, or no detections on \ref{poza-fata-ac}. The training results can be seen in figure \ref{img:training}.
+a car driving in town, or no detections on \ref{poza-fata-ac}. The training results can be seen in figure \ref{img:results} and
+the confusion matrix can be seen in \ref{img:confusion}.
 
-For our Keras-based CNN, after training, our model showed an accuracy of 98.87\%, which is similar to the results shown in
+For our Keras-based CNN, after training, our model showed an accuracy of 98.96\%, which is similar to the results shown in
 Table 5 \S 4.3 \cite{svm_paper}, where the various CNNs shown show a mean accuracy of 99.11\% and a standard deviation to accuracy
-of 0.64. These results are similar to the ones of the MPPs-CNN proposed by \cite{7603237}, however are approximatively 0.3\% worse
+of 0.64. These results are similar (but slightly better) to the ones of the MPPs-CNN mentioned by \cite{7603237}, however are approximatively 0.2\% worse
 than the ones of the CNN proposed by \cite{svm_paper}, despite our best efforts to follow the paper, this could be due to mistakes
 in our development process, or different libraries having slight differences in how the algorithms are implemented.
 
+\begin{figure}
+    \includegraphics[width=\linewidth]{keras-detection}
+    \centering
+    \caption{Results of the final system, using the SVM-based detection module and the Keras-based classification module,
+    sadly there are still false positives in the results, as can be inferred from the accuracy reported by the training process}
+\end{figure}
+
 \begin{figure*}
-    \includegraphics[width=\linewidth,]{Keras-Confusion-Matrix}
+    \includegraphics[width=0.8\linewidth,]{Keras-Confusion-Matrix}
     \centering
     \label{img:confusion}
     \caption{The confusion Matrix for one of our Keras-based CNN}
