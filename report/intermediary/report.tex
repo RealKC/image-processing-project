@@ -233,6 +233,12 @@ We generated HOG features for the images offered by the German Traffic Sign Reco
 Benchmark (GTSRB)\cite{Houben-IJCNN-2013} and trained an SVM, specifically one using a Linear
 Support Vector Classification algorithm, using facilities provided by scikit-learn\cite{scikit-learn}.
 
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{svm-with-labels}
+    \centering
+    \caption{An image with areas of interest labeled by our SVM-based traffic sign detection module}
+\end{figure}
+
 \subsection{The classification step}
 
 We explored two approaches to CNN-based\footnote{Convolutional Neural Network, see \hyperlink{appendix-cnn}{APPENDIX B} for more information} classification: one was based on PyTorch\cite{Paszke_PyTorch_An_Imperative_2019}
