@@ -1,1 +1,5 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/p1z0_xZ_)
+## Road sign detection and classification
+
+This was a project I worked on together with [Mihalache Mihai](https://github.com/Kime78) to detect and classify road signs in images.
+
+You can find out more by reading our [reports](./report/) or by reading the [source code](./code/).
